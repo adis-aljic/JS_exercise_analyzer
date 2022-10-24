@@ -7,7 +7,6 @@ const pause = document.getElementById("pause")
 const resume = document.getElementById("resume")
 clear_all.addEventListener("click", () => window.location.reload())
 
-
 resume.addEventListener("click", () => {
     current_index = document.getElementById("output").innerHTML.replaceAll("<br>","\n").length
     write_text_in_div(text_from_user.split(""), current_index)
@@ -80,7 +79,8 @@ function write_text_in_div(array, starting_index = 0) {
             pause.disabled = true
             resume.disabled = true
             start_button.disabled = false
-            api("text",document.getElementById("output").innerHTML)         
+            const length = document.getElementById("output").innerHTML.replace("<br>","").length
+            api("text",document.getElementById("output").innerHTML,length)         
             return
         }
         else {
@@ -101,16 +101,16 @@ function write_text_in_div(array, starting_index = 0) {
 
 }
 
-const api = (type, text) => {
+const api = (type, text,length) => {
 
     const encodedParams = new URLSearchParams();
     encodedParams.append(`${type}`, `${text}`);
-
+    const key = 'd25e562c1cmshf8eb607ac286886p11a99bjsn214cfe206f9c'
 const options = {
     method: 'POST',
 	headers: {
         'content-type': 'application/x-www-form-urlencoded',
-		'X-RapidAPI-Key': 'd25e562c1cmshf8eb607ac286886p11a99bjsn214cfe206f9c',
+		'X-RapidAPI-Key': `${key}`,
 		'X-RapidAPI-Host': 'text-sentiment.p.rapidapi.com'
 	},
 	body: encodedParams
@@ -119,15 +119,14 @@ const options = {
 fetch('https://text-sentiment.p.rapidapi.com/analyze', options)
 .then(response => response.json())
 .then(data => {
-    console.log(data);
     if(!data.lang) {
         
         document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: Unkwnown
-        <br>Positive: ${data.pos_percent} <br> Neutral: ${data.mid_percent} <br>Negative: ${data.neg_percent}`
+        <br>Number of characters: ${length}`
     } else {
-
+        
         document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: ${data.lang}
-        <br>Positive: ${data.pos_percent} <br> Neutral: ${data.mid_percent} <br>Negative: ${data.neg_percent}`
+        <br>Number of characters: ${length}`
 
     }
     })
