@@ -5,7 +5,6 @@ const output_text = document.getElementById("output")
 const clear_all = document.getElementById("clear")
 const pause = document.getElementById("pause")
 const resume = document.getElementById("resume")
-
 clear_all.addEventListener("click", () => window.location.reload())
 
 
@@ -30,7 +29,7 @@ start_button.addEventListener("click", () => {
         if(x=="#") lines++
 
     })
-    console.log(lines);
+
     
     setTimeout(() => write_text_in_div(text_from_user), 100);
     input_text.value = ""
