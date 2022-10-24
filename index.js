@@ -16,10 +16,12 @@ resume.addEventListener("click", () => {
     return
 })
 
-
+resume.disabled = true;
+pause.disabled = true;
 let lines =1;
 start_button.addEventListener("click", () => {
     resume.disabled = true;
+pause.disabled = false;
     document.getElementById("output_container").classList.remove("hidden")
     document.getElementById("timer").classList.remove("hidden")
     document.getElementById("text_area").classList.add("hidden")
