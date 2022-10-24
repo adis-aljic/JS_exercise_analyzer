@@ -26,9 +26,7 @@ start_button.addEventListener("click", () => {
     document.getElementById("text_area").classList.add("hidden")
     output_text.innerHTML = ""
     text_from_user = input_text.value.replaceAll('\n', '#')
-    // console.log(text_from_user.split(""));
     text_from_user.split("").map((x)=>{
-        console.log(x);
         if(x=="#") lines++
 
     })
@@ -81,22 +79,15 @@ function write_text_in_div(array, starting_index = 0) {
             pause.disabled = true
             resume.disabled = true
             start_button.disabled = false
-            api("text",document.getElementById("output").innerHTML)
-            
+            api("text",document.getElementById("output").innerHTML)         
             return
         }
         else {
-            if(array[i] == "#") {
-                
-                output_text.innerHTML += `<br>`
-            }
-            else {
-
-                output_text.innerHTML += `${array[i]}`
-            }
+            if (array[i] == "#") output_text.innerHTML += `<br>`
+            else output_text.innerHTML += `${array[i]}`      
         }
         i++;
-    }, 700);
+    }, 500);
 
     pause.addEventListener("click", () => {
         current_index = i
@@ -133,7 +124,8 @@ fetch('https://text-sentiment.p.rapidapi.com/analyze', options)
         document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: Unkwnown
         <br>Positive: ${data.pos_percent} <br> Neutral: ${data.mid_percent} <br>Negative: ${data.neg_percent}`
     } else {
-        document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: Unkwnown
+
+        document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: ${data.lang}
         <br>Positive: ${data.pos_percent} <br> Neutral: ${data.mid_percent} <br>Negative: ${data.neg_percent}`
 
     }
