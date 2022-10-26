@@ -7,14 +7,24 @@ const pause = document.getElementById("pause")
 const resume = document.getElementById("resume")
 const fast_forward = document.getElementById("forward")
 const ranger = document.getElementById("range")
+const light = document.getElementById("light")
+const dark = document.getElementById("dark")
 resume.disabled = true;
 pause.disabled = true;
 fast_forward.disabled = true;
 clear_all.addEventListener("click", () => window.location.reload())
 ranger.classList.remove("hidden")
-// za ff staviti da kupi vrijednost sa doma
 
-
+light.addEventListener("click",()=>{
+    document.getElementById("body").classList.add("dark_mode")
+    light.classList.add("hidden")
+    dark.classList.remove("hidden")
+})
+dark.addEventListener("click",()=>{
+    document.getElementById("body").classList.remove("dark_mode")
+    dark.classList.add("hidden")
+    light.classList.remove("hidden")
+})
 
 resume.addEventListener("click", () => {
     current_index = document.getElementById("output").innerHTML.replaceAll("<br>","\n").length
@@ -43,6 +53,7 @@ ranger.classList.add("hidden")
     setTimeout(() => write_text_in_div(text_from_user,ranger.value), 200);
     input_text.value = ""
 })
+
 
 const next_input_timer = () => {
 

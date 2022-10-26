@@ -6,14 +6,24 @@
     font-family: "Poppins", monospace;
     
 }
-
+.mode{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.button_mode{
+    border: none;
+}
 body{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(238, 242, 245);
-    /* color: whitesmoke; */
-    /* filter: invert(1); */
+}
+.dark_mode{
+    
+    background-color: rgb(238, 242, 245);
+    filter: invert(1);
 }
 
 #output{
