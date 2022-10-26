@@ -33,7 +33,6 @@ ranger.classList.add("hidden")
     document.getElementById("text_area").classList.add("hidden")
     output_text.innerHTML = ""
     text_from_user = input_text.value.replaceAll('\n', '#')
-    ranger.disabled = true
     
     text_from_user.split("").map((x)=>{
         if(x=="#") lines++
