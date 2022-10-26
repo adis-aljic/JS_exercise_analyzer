@@ -160,39 +160,3 @@ function write_text_in_div(array, typing_speed, starting_index = 0) {
     })
 
 }
-
-const api = (type, text,length) => {
-
-    const encodedParams = new URLSearchParams();
-    encodedParams.append(`${type}`, `${text}`);
-    const key = 'd25e562c1cmshf8eb607ac286886p11a99bjsn214cfe206f9c'
-const options = {
-    method: 'POST',
-	headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-		'X-RapidAPI-Key': `${key}`,
-		'X-RapidAPI-Host': 'text-sentiment.p.rapidapi.com'
-	},
-	body: encodedParams
-};
-
-fetch('https://text-sentiment.p.rapidapi.com/analyze', options)
-.then(response => response.json())
-.then(data => {
-    if(!data.lang) {
-        
-        document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: Unkwnown
-        <br>Number of characters: ${length}`
-    } else {
-        
-        document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: ${data.lang}
-        <br>Number of characters: ${length}`
-
-    }
-    })
-	.catch(err => {
-        console.error(err)
-        alert("There is error. Please try again")
-        window.location.reload()
-    });
-}
