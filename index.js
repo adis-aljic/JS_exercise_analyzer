@@ -9,6 +9,17 @@ const fast_forward = document.getElementById("forward")
 const ranger = document.getElementById("range")
 const light = document.getElementById("light")
 const dark = document.getElementById("dark")
+const info = document.getElementById("info")
+
+info.addEventListener("click",()=>{
+
+alert(`Welcome to Text analyzer.
+After you type text, choose speed and then click on the Send button.
+At any time you can pause, resume or simply stop output by clicking on Restart button.
+With click on button End you can stop current output and see result.
+Have a nice day :)`)
+
+})
 resume.disabled = true;
 pause.disabled = true;
 fast_forward.disabled = true;

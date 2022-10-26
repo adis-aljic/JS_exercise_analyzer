@@ -31,6 +31,11 @@ body{
     width: 50vw;
     height: auto;
 }
+#info{
+   padding-left: 70%;
+   width: 40px;
+cursor: pointer;
+}
 #inputs{
     
     background-color: rgb(223, 199, 247);
@@ -131,11 +136,9 @@ border: 1px solid rgb(61, 42, 42);
 }
 
 @media (max-width:480px) {
-    .range_slider_div{
-        width: 10rem;
-       
+    .range{
+        width: 5rem;
     }
- 
     .main_container{
         height: auto;
         padding: 1rem;
@@ -197,4 +200,7 @@ border: 1px solid rgb(61, 42, 42);
   cursor: pointer;
   border: 4px solid #333;
   box-shadow: -407px 0 0 400px #00fd0a;
+}
+img{
+    cursor: pointer;
 }
