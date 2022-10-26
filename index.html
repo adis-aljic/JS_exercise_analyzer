@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Type for fun</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <div class="main_container">
         <h1>Welcome to text analyzer</h1>
@@ -15,29 +17,36 @@
             <div id="text_area">
 
                 <label for="inputs">
-                    <textarea id="inputs"  placeholder="Type some text ... "></textarea>
+                    <textarea id="inputs" placeholder="Type some text ... "></textarea>
                 </label>
             </div>
-            <div class="btn">
 
-                <button class="submit_btn" id="submit_input">Send  </button>
-                <button class="submit_btn" id="clear">Restart  </button>
-                <button class="submit_btn" id="pause">Pause  </button>
-                <button class="submit_btn" id="resume">Resume  </button>
+            <div class="btn">
+                <button class="submit_btn" id="submit_input">Send </button>
+                <button class="submit_btn" id="clear"> Restart </button>
+                <button class="submit_btn" id="pause">Pause </button>
+                <button class="submit_btn" id="resume">Resume </button>
+                <button class="submit_btn" id="forward">End </button>
             </div>
-            
+            <div class="range_slider_div">
+                Typing speed: <span id="rangeValue">Flash</span>
+                <Input class="range" type="range" value="400" id="range" min="400" max="400" step="400" 
+                    onChange="rangeSlide(this.value)"></Input>
+            </div>
+
         </div>
         <h1 id="timer" class="hidden"></h1>
         <div class="output_container hidden" id="output_container">
-           <p><span id="output"></span><span class="cursor">|</span></p>
+            <p id="paragraph"><span id="output"></span><span class="cursor">|</span></p>
         </div>
         <div>
             <p class="analyze" id="analyze"></p>
         </div>
-        
-        
-        
+
+
+
     </div>
     <script src="index.js"></script>
 </body>
+
 </html>

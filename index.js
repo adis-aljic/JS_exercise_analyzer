@@ -5,34 +5,44 @@ const output_text = document.getElementById("output")
 const clear_all = document.getElementById("clear")
 const pause = document.getElementById("pause")
 const resume = document.getElementById("resume")
+const fast_forward = document.getElementById("forward")
+const ranger = document.getElementById("range")
+resume.disabled = true;
+pause.disabled = true;
+fast_forward.disabled = true;
 clear_all.addEventListener("click", () => window.location.reload())
+range.classList.remove("hidden")
+// za ff staviti da kupi vrijednost sa doma
+
+
 
 resume.addEventListener("click", () => {
     current_index = document.getElementById("output").innerHTML.replaceAll("<br>","\n").length
-    write_text_in_div(text_from_user.split(""), current_index)
+    write_text_in_div(text_from_user.split(""),typing_speed ,current_index)
     resume.disabled = true
     pause.disabled = false
     return
 })
-
-resume.disabled = true;
-pause.disabled = true;
 let lines =1;
 start_button.addEventListener("click", () => {
     resume.disabled = true;
 pause.disabled = false;
+range.classList.add("hidden")
     document.getElementById("output_container").classList.remove("hidden")
     document.getElementById("timer").classList.remove("hidden")
     document.getElementById("text_area").classList.add("hidden")
     output_text.innerHTML = ""
     text_from_user = input_text.value.replaceAll('\n', '#')
+    const typing_speed =range.value;
+    range.disabled = true
+    
     text_from_user.split("").map((x)=>{
         if(x=="#") lines++
 
     })
 
     
-    setTimeout(() => write_text_in_div(text_from_user), 100);
+    setTimeout(() => write_text_in_div(text_from_user,typing_speed), 200);
     input_text.value = ""
 })
 
@@ -58,6 +68,7 @@ const next_input_timer = () => {
                 document.getElementById("timer").innerHTML = `Time to restart: ${minutes}min ${seconds}s `
             }
         }
+     
     }, 1000);
 
     start_button.addEventListener("click", () => {
@@ -66,7 +77,25 @@ const next_input_timer = () => {
 
 }
 
-function write_text_in_div(array, starting_index = 0) {
+function rangeSlide(value) {
+  if(value == 400) {
+        document.getElementById('rangeValue').innerHTML = "Fast";
+    }
+    else if(value == 800){
+        document.getElementById('rangeValue').innerHTML = "Normal";
+    }
+    else if(value == 1200){
+        document.getElementById('rangeValue').innerHTML = "Slow";
+    }
+    else if(value == 1600){
+        document.getElementById('rangeValue').innerHTML = "Dino";
+    }
+    else if(value == 2000){
+        document.getElementById('rangeValue').innerHTML = "Sloth";
+    }
+   
+}
+function write_text_in_div(array, typing_speed, starting_index = 0) {
     start_button.disabled = true
     pause.disabled = false;
     let i = starting_index
@@ -88,8 +117,18 @@ function write_text_in_div(array, starting_index = 0) {
             else output_text.innerHTML += `${array[i]}`      
         }
         i++;
-    }, 500);
+        
+        fast_forward.addEventListener("click", ()=>{
+           console.log(array);
+          clearInterval(time)
+          document.getElementById("output").innerHTML = ""
+          document.getElementById("output").innerHTML = array.replace("#","<br>")
+          next_input_timer()
 
+          return
+        
+        })
+    }, typing_speed);
     pause.addEventListener("click", () => {
         current_index = i
         console.log(current_index);
