@@ -11,14 +11,14 @@ resume.disabled = true;
 pause.disabled = true;
 fast_forward.disabled = true;
 clear_all.addEventListener("click", () => window.location.reload())
-range.classList.remove("hidden")
+ranger.classList.remove("hidden")
 // za ff staviti da kupi vrijednost sa doma
 
 
 
 resume.addEventListener("click", () => {
     current_index = document.getElementById("output").innerHTML.replaceAll("<br>","\n").length
-    write_text_in_div(text_from_user.split(""),range.value ,current_index)
+    write_text_in_div(text_from_user.split(""),ranger.value ,current_index)
     resume.disabled = true
     pause.disabled = false
     return
@@ -27,14 +27,13 @@ let lines =1;
 start_button.addEventListener("click", () => {
     resume.disabled = true;
 pause.disabled = false;
-range.classList.add("hidden")
+ranger.classList.add("hidden")
     document.getElementById("output_container").classList.remove("hidden")
     document.getElementById("timer").classList.remove("hidden")
     document.getElementById("text_area").classList.add("hidden")
     output_text.innerHTML = ""
     text_from_user = input_text.value.replaceAll('\n', '#')
-    const typing_speed =range.value;
-    range.disabled = true
+    ranger.disabled = true
     
     text_from_user.split("").map((x)=>{
         if(x=="#") lines++
@@ -42,7 +41,7 @@ range.classList.add("hidden")
     })
 
     
-    setTimeout(() => write_text_in_div(text_from_user,range.value), 200);
+    setTimeout(() => write_text_in_div(text_from_user,ranger.value), 200);
     input_text.value = ""
 })
 
