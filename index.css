@@ -30,10 +30,19 @@ body{
     background-color: rgb(169, 188, 241);
     width: 50vw;
     height: auto;
+
+}
+.info_div{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    padding: 2rem;
 }
 #info{
-   padding-left: 70%;
    width: 40px;
+   height: 40px;
 cursor: pointer;
 }
 #inputs{
@@ -137,8 +146,15 @@ border: 1px solid rgb(61, 42, 42);
 
 @media (max-width:480px) {
     .range{
-        width: 5rem;
-    }
+        background-color: blueviolet;
+        width: 100px;
+        height: 15px;
+        background: #111;
+        outline: none;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);   
+     }
     .main_container{
         height: auto;
         padding: 1rem;
@@ -184,7 +200,7 @@ border: 1px solid rgb(61, 42, 42);
   font-weight: 400;
 }
 .range {
-  width: 400px;
+  max-width: 400px;
   height: 15px;
   background: #111;
   outline: none;
@@ -203,4 +219,5 @@ border: 1px solid rgb(61, 42, 42);
 }
 img{
     cursor: pointer;
+
 }
