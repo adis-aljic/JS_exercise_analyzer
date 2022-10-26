@@ -18,7 +18,7 @@ range.classList.remove("hidden")
 
 resume.addEventListener("click", () => {
     current_index = document.getElementById("output").innerHTML.replaceAll("<br>","\n").length
-    write_text_in_div(text_from_user.split(""),typing_speed ,current_index)
+    write_text_in_div(text_from_user.split(""),range.value ,current_index)
     resume.disabled = true
     pause.disabled = false
     return
@@ -42,7 +42,7 @@ range.classList.add("hidden")
     })
 
     
-    setTimeout(() => write_text_in_div(text_from_user,typing_speed), 200);
+    setTimeout(() => write_text_in_div(text_from_user,range.value), 200);
     input_text.value = ""
 })
 
