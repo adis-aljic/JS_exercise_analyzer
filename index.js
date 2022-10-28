@@ -49,6 +49,8 @@ let lines =1;
 start_button.addEventListener("click", () => {
     resume.disabled = true;
 pause.disabled = false;
+fast_forward.disabled = false;
+
 ranger.classList.add("hidden")
     document.getElementById("output_container").classList.remove("hidden")
     document.getElementById("timer").classList.remove("hidden")
@@ -145,6 +147,8 @@ function write_text_in_div(array, typing_speed, starting_index = 0) {
           document.getElementById("output").innerHTML = ""
           document.getElementById("output").innerHTML = array.replace("#","<br>")
           next_input_timer()
+          api("text",document.getElementById("output").innerHTML,document.getElementById("output").innerHTML.replaceAll("<br>","\n").length)         
+
 
           return
         
@@ -181,7 +185,7 @@ fetch('https://text-sentiment.p.rapidapi.com/analyze', options)
 .then(data => {
     if(!data.lang) {
         
-        document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: Unkwnown
+        document.getElementById("analyze").innerHTML = `Number of lines: ${lines} <br> Language: Unknown
         <br>Number of characters: ${length}`
     } else {
         
